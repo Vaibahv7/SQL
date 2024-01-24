@@ -386,19 +386,17 @@ worker_id fname lname salary joining_date department WORKER_REF_ID worker_title 
 -- show records from one table that another table does not have.
 
 select * from worker w
-left join title t 
-on w.worker_id=t.WORKER_REF_ID;
+where worker_id not in (
+select worker_ref_id from bonus);
 
-worker_id fname lname salary joining_date department WORKER_REF_ID worker_title titled_date
-1	Monika	Arora	100000	2021-02-20 09:00:00	HR	1	Manager		2023-02-20 00:00:00
-2	Niharika Verma	80000	2021-06-11 09:00:00	Admin	2	Executive	2023-06-11 00:00:00
-3	Vishal	Singhal	300000	2021-02-20 09:00:00	HR	3	Lead		2023-06-11 00:00:00
-4	Amitabh	Singh	500000	2021-02-20 09:00:00	Admin	4	Asst. Manager	2023-06-11 00:00:00
-5	Vivek	Bhati	500000	2021-06-11 09:00:00	Admin	5	Manager		2023-06-11 00:00:00
-6	Vipul	Diwan	200000	2021-06-11 09:00:00	Account	6	Lead	        2023-06-11 00:00:00
-7	Satish	Kumar	75000	2021-01-20 09:00:00	Account	7	Executive	2023-06-11 00:00:00
-8	Geetika	Chauhan	90000	2021-04-11 09:00:00	Admin	8	Executive	2023-06-11 00:00:00
-9	Mohan	Sharma	550000	2021-03-24 09:00:00	Admin	Null	Null	        Null
+worker_id fname lname  salary  joining_date 	        department
+4	Amitabh	Singh	500000	2021-02-20 09:00:00	Admin
+5	Vivek	Bhati	500000	2021-06-11 09:00:00	Admin
+6	Vipul	Diwan	200000	2021-06-11 09:00:00	Account
+7	Satish	Kumar	75000	2021-01-20 09:00:00	Account
+8	Geetika	Chauhan	90000	2021-04-11 09:00:00	Admin
+9	Mohan	Sharma	550000	2021-03-24 09:00:00	Admin
+					
 
 
 -- current date and time.
